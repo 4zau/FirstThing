@@ -7,11 +7,15 @@ namespace FirstThing {
             while (!shouldClose) {
                 Console.WriteLine("What do you want?");
                 Console.WriteLine("1. Tasking");
+                Console.WriteLine("2. Quiz app");
                 Console.WriteLine("0. Quit");
                 int choice = int.Parse(Console.ReadLine());
                 switch (choice) {
                     case 1:
                         Tasking.Execute();
+                        break;
+                    case 2:
+                        Quiz.Execute();
                         break;
                     case 0:
                         shouldClose = true;

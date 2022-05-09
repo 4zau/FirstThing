@@ -5,6 +5,7 @@ namespace FirstThing.RPG;
 
 public class RPG {
     // enums for weapons/armors etc.
+    //TODO: Add potions/magic, more weapons/armors
     public enum Weapons {
         Nothing = 0,
         WoodenSword = 5,
@@ -22,6 +23,7 @@ public class RPG {
     }
     
     // City choices
+    //TODO: Add quests
     public static void Execute() {
         Console.WriteLine("Welcome, adventurer!");
         while (true) {
@@ -65,6 +67,7 @@ public class RPG {
     }
 
     // outside choices
+    //TODO: Add more locations/raid bosses (from quests)
     static void Outside() {
         Console.WriteLine("You are standing at gates.");
         Console.WriteLine("Where exactly you wish to go?");

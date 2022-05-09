@@ -11,7 +11,13 @@ namespace FirstThing {
                 Console.WriteLine("2. Quiz app");
                 Console.WriteLine("3. RPG!");
                 Console.WriteLine("0. Quit");
-                int choice = int.Parse(Console.ReadLine());
+                int choice = 0;
+                try {
+                    choice = int.Parse(Console.ReadLine());
+                }
+                catch (Exception e) {
+                    Console.WriteLine("OOPS! Caught an error, here it is: {0}", e.Message);
+                }
                 switch (choice) {
                     case 1:
                         Tasking.Execute();

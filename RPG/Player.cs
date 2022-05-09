@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using static FirstThing.RPG.RPG;
 
 namespace FirstThing.RPG; 
@@ -5,16 +6,26 @@ namespace FirstThing.RPG;
 static class Player {
     // variables
     public static int Money { get; set; }
-    public static int Health { get; set; }
+
+    static int _health;
+    public static int Health {
+        get => _health;
+        set {
+            _health = value;
+            if (_health > 100) 
+                _health = 100;
+        } 
+    }
+
     public static Weapons Weapon { get; set; }
     public static Armors Armor { get; set; }
 
     // constructor
     static Player() {
-        Money = 2;
+        Money = 0;
         Health = 100;
-        Weapon = Weapons.Nothing;
-        Armor = Armors.Nothing;
+        Weapon = Weapons.WoodenSword;
+        Armor = Armors.WoodenArmor;
     }
     
     public static void OutputStats() {

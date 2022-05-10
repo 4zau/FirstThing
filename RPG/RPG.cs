@@ -3,9 +3,8 @@ using System.Data.SqlTypes;
 
 namespace FirstThing.RPG; 
 
-public class RPG {
+public static class RPG {
     // enums for weapons/armors etc.
-    //TODO: Add magic
     public enum Weapons {
         WoodenSword = 5,
         BronzeSword = 7,
@@ -34,7 +33,6 @@ public class RPG {
     }
     
     // City choices
-    //TODO: Add quests
     public static void Execute() {
         Console.WriteLine("Welcome, adventurer!");
         while (true) {
@@ -78,12 +76,12 @@ public class RPG {
     }
 
     // outside choices
-    //TODO: Add raid boss(dragon)/quests
     static void Outside() {
         Console.WriteLine("You are standing at gates.");
         Console.WriteLine("Where exactly you wish to go?");
         Console.WriteLine("1. Into forest");
         Console.WriteLine("2. Into catacombs");
+        Console.WriteLine("3. Challenge the dragon!");
         Console.WriteLine("0 (or anything). Go back");
         
         int choice = 0;
@@ -99,6 +97,9 @@ public class RPG {
                 break;
             case 2:
                 Catacombs.BeginFight();
+                break;
+            case 3:
+                Dragon.BeginFight();
                 break;
         }
     }

@@ -5,21 +5,32 @@ namespace FirstThing.RPG;
 
 public class RPG {
     // enums for weapons/armors etc.
-    //TODO: Add potions/magic, more weapons/armors
+    //TODO: Add magic
     public enum Weapons {
-        Nothing = 0,
         WoodenSword = 5,
         BronzeSword = 7,
         SilverSword = 14,
-        Fish = 99999999
+        GoldSword = 20,
+        DiamondSword = 30,
+        DragonSword = 50,
+        Fish = 99999999,
     }
     
     public enum Armors {
-        Nothing = 0,
-        WoodenArmor = 3,
-        BronzeArmor = 5,
-        SilverArmor = 10,
-        Bucket = 99999999
+        WoodenArmor = 5,
+        BronzeArmor = 7,
+        SilverArmor = 13,
+        GoldArmor = 17,
+        DiamondArmor = 20,
+        DragonArmor = 35,
+        Bucket = 99999999,
+    }
+
+    public enum Potions {
+        HealingPotion,
+        DamagePotion,
+        ArmorPotion,
+        RetreatPotion,
     }
     
     // City choices
@@ -67,12 +78,12 @@ public class RPG {
     }
 
     // outside choices
-    //TODO: Add more locations/raid bosses (from quests)
+    //TODO: Add raid boss(dragon)/quests
     static void Outside() {
         Console.WriteLine("You are standing at gates.");
         Console.WriteLine("Where exactly you wish to go?");
         Console.WriteLine("1. Into forest");
-        
+        Console.WriteLine("2. Into catacombs");
         Console.WriteLine("0 (or anything). Go back");
         
         int choice = 0;
@@ -85,6 +96,9 @@ public class RPG {
         switch (choice) {
             case 1:
                 Forest.BeginFight();
+                break;
+            case 2:
+                Catacombs.BeginFight();
                 break;
         }
     }
@@ -113,9 +127,10 @@ public class RPG {
 
             switch (choice) {
                 case 1:
+                    // attack is little randomized, in favor of more damage
                     int damage = (int)Player.Weapon  + rnd.Next((int)(-(int)Player.Weapon / 7), (int)((int)Player.Weapon / 5));
                     Console.WriteLine("You charge at enemy dealing {0} damage! And...", damage);
-                    enemy.Health -= damage;
+                    enemy.Health -= damage - enemy.Armor;
                     if (enemy.Health <= 0 ) {
                         Console.WriteLine("...the enemy is dead! Battle successful!");
                         Reward(enemy);
@@ -125,8 +140,8 @@ public class RPG {
                     EnemyAttack(enemy, rnd);
                     break;
                 case 0:
-                    Console.WriteLine("You try to escape! You have 20% chance to escape!");
-                    int chance = rnd.Next(1, 5);
+                    Console.WriteLine("You try to escape! You have 25% chance to escape!");
+                    int chance = rnd.Next(1, 4);
 
                     if (chance == 1) {
                         Console.WriteLine("Success!");
@@ -144,11 +159,12 @@ public class RPG {
         }
     }
 
-    // Enemy / Player attacks
+    // Enemy attack
     static void EnemyAttack(Enemy enemy, Random rnd) {
+        // enemy attacks are randomized less
         int damage = enemy.Damage + rnd.Next((int)(-enemy.Damage / 10), (int)(enemy.Damage / 10));
         Console.WriteLine("Enemy charges at you and deals {0} damage! And... ", damage);
-        Player.Health -= damage;
+        Player.Health -= damage - (int)Player.Armor;
         if (Player.Health <= 0) {
             Console.WriteLine("... you died.");
             System.Environment.Exit(0);

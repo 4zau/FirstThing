@@ -20,12 +20,15 @@ static class Player {
     public static Weapons Weapon { get; set; }
     public static Armors Armor { get; set; }
 
+    public static List<Potions> PotionsList { get; set; }
+
     // constructor
     static Player() {
-        Money = 0;
+        Money = 20000;
         Health = 100;
         Weapon = Weapons.WoodenSword;
         Armor = Armors.WoodenArmor;
+        PotionsList = new List<Potions>();
     }
     
     public static void OutputStats() {
@@ -33,5 +36,9 @@ static class Player {
         Console.WriteLine("Health: {0}", Health);
         Console.WriteLine("Weapon: {0}, it deals: {1}", Weapon, (int)Weapon);
         Console.WriteLine("Armor: {0}, it blocks: {1}", Armor, (int)Armor);
+        Console.WriteLine("All your potions:");
+        foreach (var potion in PotionsList) {
+            Console.WriteLine(potion);
+        }
     }
 }

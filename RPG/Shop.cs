@@ -132,10 +132,10 @@ public class Shop {
 
     static void ShopPotions() {
         Console.WriteLine("Here's what i've got:");
-        Console.WriteLine("1. HealingPotion, price: {0}", _potionPrices[0]);
-        Console.WriteLine("2. DamagePotion, price: {0}", _potionPrices[1]);
-        Console.WriteLine("3. ArmorPotion, price: {0}", _potionPrices[2]);
-        Console.WriteLine("4. RetreatPotion, price: {0}", _potionPrices[3]);
+        Console.WriteLine("1. HealingPotion (+50hp), price: {0}", _potionPrices[0]);
+        Console.WriteLine("2. DamagePotion (+20dmg for 1 fight), price: {0}", _potionPrices[1]);
+        Console.WriteLine("3. ArmorPotion (+15arm for 1 fight), price: {0}", _potionPrices[2]);
+        Console.WriteLine("4. RetreatPotion (100% run), price: {0}", _potionPrices[3]);
         Console.WriteLine("0 (or anything). No.");
         Console.WriteLine("Something caught your eye? (your money: {0})", Player.Money);
         int choice = 0;

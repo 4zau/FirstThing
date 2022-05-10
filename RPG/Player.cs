@@ -24,7 +24,7 @@ static class Player {
 
     // constructor
     static Player() {
-        Money = 20000;
+        Money = 200;
         Health = 100;
         Weapon = Weapons.WoodenSword;
         Armor = Armors.WoodenArmor;

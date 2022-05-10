@@ -2,7 +2,7 @@
 using FirstThing;
 
 namespace FirstThing {
-    class Hello {
+    static class Hello {
         public static void Main() {
             bool shouldClose = false;
             while (!shouldClose) {
